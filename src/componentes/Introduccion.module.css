@@ -1,0 +1,81 @@
+.seccion {
+  background:
+    linear-gradient(to bottom, var(--fondo-profundo), var(--fondo-base) 45%, var(--fondo-profundo)),
+    var(--fondo-profundo);
+}
+
+.rejilla {
+  display: grid;
+  gap: var(--e-6);
+}
+
+.etiqueta {
+  color: var(--magenta);
+  margin-bottom: var(--e-4);
+}
+
+.titulo {
+  max-width: 16ch;
+}
+
+.palabra {
+  display: inline-block;
+  color: var(--texto);
+  will-change: opacity;
+}
+
+.cuerpo {
+  display: grid;
+  gap: var(--e-5);
+  align-content: start;
+  padding-top: var(--e-2);
+}
+
+.nota {
+  padding-left: var(--e-4);
+  border-left: 1px solid var(--magenta);
+  font-family: var(--fuente-mono);
+  font-size: var(--t-sm);
+  color: var(--texto-medio);
+}
+
+.pilares {
+  display: grid;
+  gap: var(--e-5);
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: var(--e-6);
+  border-top: 1px solid var(--linea);
+}
+
+.pilares li {
+  display: grid;
+  gap: var(--e-2);
+}
+
+.pilarIndice {
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.12em;
+  color: var(--magenta);
+}
+
+.pilarTitulo {
+  font-size: var(--t-h3);
+}
+
+.pilarTexto {
+  font-size: var(--t-sm);
+  color: var(--texto-medio);
+}
+
+@media (min-width: 760px) {
+  .rejilla {
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--e-7);
+  }
+
+  .pilares {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--e-6);
+  }
+}

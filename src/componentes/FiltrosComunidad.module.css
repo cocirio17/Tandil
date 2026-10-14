@@ -1,0 +1,61 @@
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2);
+  margin-bottom: var(--e-6);
+}
+
+.pestana {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  min-height: 2.5rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--r-full);
+  background: var(--fondo-superficie);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.06em;
+  color: var(--texto-medio);
+  transition:
+    color var(--medio) var(--curva),
+    border-color var(--medio) var(--curva);
+}
+
+.pestana:hover,
+.pestana:focus-visible {
+  color: var(--texto);
+  border-color: var(--linea-neon);
+}
+
+.fondoActivo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(to right, var(--magenta-tenue), var(--magenta-tenue));
+  border: 1px solid var(--linea-neon);
+}
+
+.pestanaActiva {
+  color: var(--texto);
+  border-color: var(--linea-neon);
+}
+
+.texto,
+.total {
+  position: relative;
+  z-index: 1;
+}
+
+.total {
+  padding: 0.05rem 0.4rem;
+  border-radius: var(--r-full);
+  background: rgba(168, 85, 247, 0.2);
+  font-size: 0.62rem;
+  font-variant-numeric: tabular-nums;
+}

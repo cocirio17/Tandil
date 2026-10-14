@@ -1,0 +1,21 @@
+.salto {
+  position: fixed;
+  top: var(--e-3);
+  left: var(--e-3);
+  z-index: 100;
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--r-full);
+  background: var(--magenta);
+  color: var(--fondo-profundo);
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translateY(-250%);
+  transition: transform var(--medio) var(--curva);
+}
+
+.salto:focus-visible {
+  transform: translateY(0);
+  outline-offset: 3px;
+}

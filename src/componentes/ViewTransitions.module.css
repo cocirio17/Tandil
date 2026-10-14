@@ -1,0 +1,250 @@
+.proveedor {
+  position: relative;
+}
+
+.proveedor.transicionando {
+  pointer-events: none;
+}
+
+/* View Transitions API nativa */
+@supports (view-transition-name: auto) {
+  .proveedor {
+    view-transition-name: principal;
+  }
+}
+
+/* Tabs con shared layout */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+}
+
+.tabList {
+  display: flex;
+  gap: var(--e-2);
+  position: relative;
+  padding: 0.25rem;
+  background: var(--fondo-superficie);
+  border: 1px solid var(--linea);
+  border-radius: var(--r-md);
+}
+
+.tab {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  font-family: var(--fuente-titulo);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--texto-medio);
+  cursor: pointer;
+  transition: color var(--medio) var(--curva);
+  white-space: nowrap;
+}
+
+.tab:hover,
+.tab:focus-visible {
+  color: var(--texto);
+}
+
+.tabActivo {
+  color: var(--acento);
+}
+
+.indicador {
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  border-radius: var(--r-sm);
+  background: var(--acento);
+  box-shadow: var(--brillo-neon);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.panel {
+  padding: var(--e-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--r-lg);
+  background: var(--fondo-superficie);
+}
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--e-4);
+  background: rgba(8, 11, 26, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.modalContent {
+  position: relative;
+  width: 100%;
+  max-width: 32rem;
+  max-height: 85vh;
+  overflow: hidden;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--r-lg);
+  background: var(--fondo-base);
+  box-shadow: var(--sombra-alta);
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--e-4) var(--e-5);
+  border-bottom: 1px solid var(--linea);
+}
+
+.modalTitulo {
+  font-size: var(--t-h3);
+  font-weight: 700;
+}
+
+.modalCerrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--linea);
+  border-radius: var(--r-full);
+  background: var(--fondo-superficie);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--texto-medio);
+  cursor: pointer;
+  transition: all var(--medio) var(--curva);
+}
+
+.modalCerrar:hover {
+  border-color: var(--acento-hacking);
+  color: var(--acento-hacking);
+  background: var(--acento-hacking-tenue);
+}
+
+.modalBody {
+  padding: var(--e-5);
+  overflow-y: auto;
+  max-height: calc(85vh - 4rem);
+}
+
+/* Partículas de física */
+.particulasFisica {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particula {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Badge giratorio */
+.badgeGiratorio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--r-full);
+  background: var(--fondo-superficie);
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: var(--tracking-etiqueta);
+  text-transform: uppercase;
+  color: var(--texto-medio);
+}
+
+.badgeGiratorio::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-acento);
+  animation: pulso var(--velocidad-giro) ease-in-out infinite;
+}
+
+@keyframes pulso {
+  0%, 100% { box-shadow: 0 0 0 0 var(--color-acento); }
+  50% { box-shadow: 0 0 0 8px transparent; }
+}
+
+/* Texto giratorio */
+.textoGiratorio {
+  display: inline-block;
+}
+
+/* Shared layout */
+.sharedLayout {
+  position: relative;
+}
+
+/* Animaciones de respaldo para navegadores sin View Transitions */
+@keyframes vt-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes vt-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes vt-slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes vt-slide-down {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-16px); }
+}
+
+@keyframes vt-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes vt-scale-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.95); }
+}
+
+/* Clases utilitarias para transiciones manuales */
+.vt-enter {
+  animation: vt-fade-in var(--vt-duration, 400ms) var(--vt-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.vt-exit {
+  animation: vt-fade-out var(--vt-duration, 400ms) var(--vt-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.vt-slide-enter {
+  animation: vt-slide-up var(--vt-duration, 400ms) var(--vt-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.vt-slide-exit {
+  animation: vt-slide-down var(--vt-duration, 400ms) var(--vt-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.vt-scale-enter {
+  animation: vt-scale-in var(--vt-duration, 400ms) var(--vt-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.vt-scale-exit {
+  animation: vt-scale-out var(--vt-duration, 400ms) var(--vt-easing, cubic-bezier(0.16, 1, 0.3, 1));
+}

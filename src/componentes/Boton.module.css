@@ -1,0 +1,88 @@
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e-2);
+  min-height: 2.875rem;
+  padding: 0.7rem 1.25rem;
+  border-radius: var(--r-full);
+  border: 1px solid transparent;
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition:
+    background-color var(--medio) var(--curva),
+    border-color var(--medio) var(--curva),
+    color var(--medio) var(--curva),
+    box-shadow var(--medio) var(--curva);
+}
+
+.texto {
+  display: inline-block;
+}
+
+.icono {
+  flex-shrink: 0;
+  transition: transform var(--medio) var(--curva);
+}
+
+.boton:hover .icono,
+.boton:focus-visible .icono {
+  transform: translateX(3px);
+}
+
+.primario {
+  background: var(--purpura);
+  color: #FFFFFF;
+  box-shadow: var(--brillo-violeta-neon);
+}
+
+.primario:hover,
+.primario:focus-visible {
+  background: var(--violeta);
+  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.55), 0 18px 44px -18px rgba(168, 85, 247, 0.9);
+}
+
+.secundario {
+  background: var(--fondo-superficie);
+  border-color: var(--linea-fuerte);
+  color: var(--texto);
+}
+
+.secundario:hover,
+.secundario:focus-visible {
+  border-color: var(--linea-neon);
+  background: var(--fondo-elevado);
+}
+
+/* Variante con el acento de la jornada que envuelve al botón. */
+.acento {
+  background: var(--acento);
+  color: #FFFFFF;
+}
+
+.acento:hover,
+.acento:focus-visible {
+  filter: brightness(1.12);
+  box-shadow: var(--acento-brillo);
+}
+
+.fantasma {
+  background: transparent;
+  border-color: transparent;
+  color: var(--texto-medio);
+  padding-inline: 0.75rem;
+}
+
+.fantasma:hover,
+.fantasma:focus-visible {
+  color: var(--texto);
+  background: rgba(168, 85, 247, 0.12);
+}
+
+.ancho {
+  width: 100%;
+}

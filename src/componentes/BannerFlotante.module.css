@@ -1,0 +1,133 @@
+.banner {
+  position: fixed;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  left: 50%;
+  z-index: 70;
+  transform: translateX(-50%);
+  width: min(30rem, calc(100vw - var(--canal) * 2));
+  display: flex;
+  align-items: stretch;
+  gap: var(--e-2);
+  padding: 0.7rem 0.7rem 0.7rem 1rem;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--r-full);
+  background: color-mix(in srgb, var(--fondo-profundo) 92%, transparent);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--sombra-alta), var(--brillo-neon);
+}
+
+.punto {
+  position: relative;
+  flex-shrink: 0;
+  align-self: center;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--magenta);
+}
+
+.bannerEnVivo .punto {
+  background: var(--magenta);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--magenta) 60%, transparent);
+  animation: latido 1.6s var(--curva) infinite;
+}
+
+.bannerProximamente .punto {
+  background: var(--violeta);
+}
+
+@keyframes latido {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--magenta) 55%, transparent);
+  }
+  60% {
+    box-shadow: 0 0 0 9px transparent;
+  }
+}
+
+.contenido {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 0.1rem;
+}
+
+.etiqueta {
+  font-family: var(--fuente-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--magenta-texto);
+}
+
+.bannerProximamente .etiqueta {
+  color: var(--violeta-texto);
+}
+
+.mensaje {
+  font-size: var(--t-sm);
+  line-height: 1.4;
+  color: var(--texto);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mensaje strong {
+  font-family: var(--fuente-titulo);
+}
+
+/* En pantallas angostas el mensaje completo puede ocupar dos líneas. */
+@media (max-width: 480px) {
+  .mensaje {
+    white-space: normal;
+  }
+}
+
+.enlace {
+  flex-shrink: 0;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--magenta) 45%, transparent);
+  border-radius: var(--r-full);
+  background: var(--acento-hacking-tenue);
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--magenta-texto);
+  transition:
+    background-color var(--medio) var(--curva),
+    color var(--medio) var(--curva);
+}
+
+.enlace:hover,
+.enlace:focus-visible {
+  background: color-mix(in srgb, var(--magenta) 24%, transparent);
+  color: #fff;
+}
+
+.cerrar {
+  flex-shrink: 0;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--r-full);
+  color: var(--texto-tenue);
+  transition:
+    color var(--rapido) var(--curva),
+    background-color var(--rapido) var(--curva);
+}
+
+.cerrar:hover,
+.cerrar:focus-visible {
+  color: var(--texto);
+  background: rgba(255, 255, 255, 0.06);
+}

@@ -1,0 +1,256 @@
+.tarjeta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-3);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--r-lg);
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--acento) 10%, transparent), transparent 45%),
+    var(--fondo-superficie);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--sombra-media);
+  overflow: hidden;
+  isolation: isolate;
+  transform-style: preserve-3d;
+  transition:
+    border-color var(--medio) var(--curva),
+    transform var(--medio) var(--curva),
+    box-shadow var(--medio) var(--curva);
+}
+
+.tarjeta::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--acento);
+  opacity: 0.75;
+}
+
+.tarjeta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+    color-mix(in srgb, var(--acento) 75%, transparent),
+    transparent 70%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--medio) var(--curva);
+}
+
+.tarjeta:hover::after,
+.tarjeta:focus-within::after {
+  opacity: 1;
+}
+
+.activa {
+  border-color: color-mix(in srgb, var(--acento) 45%, transparent);
+  box-shadow: var(--sombra-alta), 0 0 0 1px color-mix(in srgb, var(--acento) 22%, transparent);
+}
+
+.hacking {
+  --acento: var(--acento-hacking);
+  --acento-tenue: var(--acento-hacking-tenue);
+}
+
+.startup {
+  --acento: var(--acento-startup);
+  --acento-tenue: var(--acento-startup-tenue);
+}
+
+.ornamentoCapa {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  color: var(--acento);
+  opacity: 0.16;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom left, #000, transparent 72%);
+  -webkit-mask-image: linear-gradient(to bottom left, #000, transparent 72%);
+}
+
+/* Escena WebGL de fondo: formas 3D que reaccionan al cursor de la tarjeta. */
+.capa3d {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.42;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, #000 30%, transparent 90%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 90%);
+}
+
+/* Escena 3D sutil dentro de la tarjeta */
+.escena3d {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+@media (max-width: 768px) {
+  .escena3d {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .escena3d {
+    display: none;
+  }
+}
+
+.ornamento {
+  width: clamp(11rem, 34%, 17rem);
+  height: auto;
+}
+
+.encabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-3);
+  justify-content: space-between;
+}
+
+.fecha {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  font-family: var(--fuente-mono);
+  font-size: var(--t-sm);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--acento);
+}
+
+.fechaBarra {
+  width: 1.5rem;
+  height: 1px;
+  background: var(--linea-fuerte);
+}
+
+.diaSemana {
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.08em;
+  color: var(--texto-tenue);
+}
+
+.insignia {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  padding: 0.25rem 0.6rem;
+  border: 1px solid color-mix(in srgb, var(--acento) 40%, transparent);
+  border-radius: var(--r-full);
+  background: var(--acento-tenue);
+  font-family: var(--fuente-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+
+.insigniaPunto {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.track {
+  margin-top: var(--e-3);
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: var(--tracking-etiqueta);
+  text-transform: uppercase;
+  color: var(--texto-tenue);
+}
+
+.titulo {
+  font-size: var(--t-h2);
+  letter-spacing: var(--tracking-display);
+}
+
+.categoria {
+  font-size: var(--t-md);
+  color: var(--acento);
+}
+
+.descripcion {
+  margin-top: var(--e-1);
+  font-size: var(--t-base);
+  color: var(--texto-medio);
+}
+
+.datos {
+  display: grid;
+  gap: var(--e-3);
+  margin-top: var(--e-5);
+  padding-top: var(--e-4);
+  border-top: 1px solid var(--linea);
+}
+
+.datos dt {
+  font-family: var(--fuente-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--texto-tenue);
+}
+
+.datos dd {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+  margin-top: 0.15rem;
+  font-size: var(--t-sm);
+  color: var(--texto);
+}
+
+.datos dd svg {
+  flex-shrink: 0;
+  color: var(--acento);
+}
+
+.pie {
+  display: grid;
+  gap: var(--e-3);
+  margin-top: auto;
+  padding-top: var(--e-5);
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2);
+}
+
+.nota {
+  font-size: var(--t-xs);
+  color: var(--texto-tenue);
+}
+
+@media (min-width: 900px) {
+  .nota {
+    max-width: 42ch;
+  }
+}

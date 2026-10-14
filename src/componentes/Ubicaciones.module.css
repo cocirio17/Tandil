@@ -1,0 +1,160 @@
+.seccion {
+  background: var(--fondo-profundo);
+}
+
+.encabezado {
+  display: grid;
+  gap: var(--e-4);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.etiqueta {
+  color: var(--texto-medio);
+}
+
+.titulo {
+  max-width: 18ch;
+}
+
+.lineaTiempo {
+  position: relative;
+  display: grid;
+  gap: var(--e-6);
+}
+
+.hito {
+  display: grid;
+  gap: var(--e-4);
+}
+
+.marcaTiempo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+}
+
+.marcaTiempo::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1.5rem;
+  bottom: -1.5rem;
+  width: 1px;
+  background: var(--linea-fuerte);
+}
+
+.hito:first-child .marcaTiempo::before {
+  top: 50%;
+}
+
+.hito:last-child .marcaTiempo::before {
+  bottom: 50%;
+}
+
+.nodo {
+  position: relative;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--acento);
+  background: var(--fondo-profundo);
+}
+
+.hitoActivo .nodo {
+  background: var(--acento);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--acento) 22%, transparent);
+}
+
+.tarjeta {
+  display: grid;
+  gap: var(--e-3);
+  align-content: start;
+  padding: clamp(1.35rem, 3vw, 2rem);
+  border: 1px solid var(--linea);
+  border-radius: var(--r-lg);
+  background: linear-gradient(155deg, var(--fondo-superficie), var(--fondo-base));
+  transition: border-color var(--medio) var(--curva);
+}
+
+.tarjeta:hover {
+  border-color: color-mix(in srgb, var(--acento) 35%, var(--linea));
+}
+
+.hacking {
+  --acento: var(--acento-hacking);
+}
+
+.startup {
+  --acento: var(--acento-startup);
+}
+
+.fecha {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-3);
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+
+.jornadaNombre {
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--r-full);
+  color: var(--texto-medio);
+}
+
+.nombreSede {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+  font-size: var(--t-h3);
+}
+
+.nombreSede svg {
+  flex-shrink: 0;
+  color: var(--acento);
+}
+
+.direccion {
+  font-style: normal;
+  font-size: var(--t-sm);
+  color: var(--texto-medio);
+}
+
+.nota {
+  font-size: var(--t-sm);
+  color: var(--texto-tenue);
+}
+
+.tarjeta a {
+  justify-self: start;
+  margin-top: var(--e-2);
+}
+
+@media (min-width: 860px) {
+  .lineaTiempo {
+    position: relative;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--e-6);
+  }
+
+  /* Una sola línea continua recorre las dos sedes, con un nodo en cada una. */
+  .lineaTiempo::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0.75rem;
+    height: 1px;
+    background: var(--linea-fuerte);
+  }
+
+  .marcaTiempo::before {
+    display: none;
+  }
+}

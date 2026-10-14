@@ -1,0 +1,173 @@
+.encabezado {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: var(--z-encabezado);
+  padding-top: env(safe-area-inset-top);
+  transition:
+    background-color var(--lento) var(--curva),
+    border-color var(--lento) var(--curva),
+    backdrop-filter var(--lento) var(--curva);
+  border-bottom: 1px solid transparent;
+}
+
+.encabezadoSolido {
+  background-color: color-mix(in srgb, var(--fondo-profundo) 84%, transparent);
+  border-bottom-color: var(--linea);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
+.progreso {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 1;
+  height: 2px;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--acento-hacking), var(--violeta), var(--acento-startup));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--acento-hacking) 60%, transparent);
+  pointer-events: none;
+}
+
+.contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-4);
+  width: 100%;
+  max-width: var(--ancho);
+  height: var(--alto-encabezado);
+  margin-inline: auto;
+  padding-inline: var(--canal);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.navegacion {
+  display: none;
+}
+
+.lista {
+  display: flex;
+  align-items: center;
+  gap: var(--e-5);
+}
+
+.enlaceNav {
+  position: relative;
+  display: inline-block;
+  padding-block: 0.35rem;
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.06em;
+  color: var(--texto-medio);
+  transition: color var(--medio) var(--curva);
+}
+
+.enlaceNav:hover,
+.enlaceNav:focus-visible {
+  color: var(--texto);
+}
+
+.enlaceNavActivo {
+  color: var(--texto);
+}
+
+.subrayado {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1px;
+  background: var(--acento);
+}
+
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+}
+
+.inscribirse {
+  display: none;
+}
+
+.botonMenu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--r-full);
+  color: var(--texto);
+  transition:
+    border-color var(--medio) var(--curva),
+    background-color var(--medio) var(--curva);
+}
+
+.botonMenu:hover {
+  border-color: rgba(233, 237, 243, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.panel {
+  position: fixed;
+  inset: var(--alto-encabezado) 0 0;
+  z-index: var(--z-menu);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--e-5);
+  padding: var(--e-6) var(--canal) var(--e-7);
+  background: color-mix(in srgb, var(--fondo-profundo) 97%, transparent);
+  border-top: 1px solid var(--linea);
+  backdrop-filter: blur(18px);
+  overflow-y: auto;
+}
+
+.listaMovil {
+  display: grid;
+  gap: var(--e-2);
+}
+
+.enlaceMovil {
+  display: flex;
+  align-items: baseline;
+  gap: var(--e-3);
+  padding-block: 0.7rem;
+  border-bottom: 1px solid var(--linea);
+  font-family: var(--fuente-titulo);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-apretado);
+  color: var(--texto);
+}
+
+.indiceMovil {
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  color: var(--acento);
+}
+
+.pieMovil {
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  color: var(--texto-tenue);
+}
+
+@media (min-width: 900px) {
+  .navegacion {
+    display: block;
+  }
+
+  .inscribirse {
+    display: inline-flex;
+  }
+
+  .botonMenu {
+    display: none;
+  }
+}

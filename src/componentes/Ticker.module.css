@@ -1,0 +1,47 @@
+.tira {
+  position: relative;
+  border-block: 1px solid var(--linea);
+  background: var(--fondo-base);
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.pista {
+  display: flex;
+  width: max-content;
+  animation: desplazamiento 42s linear infinite;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-5);
+  padding: var(--e-3) var(--e-5);
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: var(--tracking-etiqueta);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--texto-tenue);
+}
+
+.separador {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--magenta);
+  opacity: 0.6;
+}
+
+@keyframes desplazamiento {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pista {
+    animation: none;
+  }
+}

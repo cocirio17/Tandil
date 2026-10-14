@@ -1,0 +1,45 @@
+.contador {
+  display: grid;
+  gap: var(--e-2);
+}
+
+.contadorTitulo {
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: var(--tracking-etiqueta);
+  text-transform: uppercase;
+  color: var(--texto-medio);
+}
+
+.contadorCeldas {
+  display: flex;
+  gap: var(--e-2);
+}
+
+.celda {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 3.4rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--linea);
+  border-radius: var(--r-sm);
+  background: rgba(255, 255, 255, 0.02);
+  text-align: center;
+}
+
+.celdaValor {
+  font-family: var(--fuente-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  color: var(--texto);
+}
+
+.celdaUnidad {
+  font-family: var(--fuente-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-tenue);
+}

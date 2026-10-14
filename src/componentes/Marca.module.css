@@ -1,0 +1,33 @@
+.marca {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-family: var(--fuente-titulo);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-apretado);
+  color: var(--texto);
+  white-space: nowrap;
+}
+
+.tech {
+  color: var(--magenta);
+}
+
+.edicion {
+  font-family: var(--fuente-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--texto-tenue);
+}
+
+@media (max-width: 400px) {
+  .marca {
+    font-size: 0.9rem;
+  }
+
+  .edicion {
+    display: none;
+  }
+}

@@ -1,0 +1,53 @@
+.selector {
+  display: none;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.25rem;
+  border: 1px solid var(--linea);
+  border-radius: var(--r-full);
+  background: color-mix(in srgb, var(--fondo-superficie) 82%, transparent);
+}
+
+.icono {
+  display: grid;
+  width: 1.75rem;
+  height: 1.75rem;
+  place-items: center;
+  color: var(--texto-tenue);
+  pointer-events: none;
+}
+
+.opcion {
+  position: relative;
+  display: grid;
+  width: 1.8rem;
+  height: 1.8rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: var(--r-full);
+}
+
+.indicador {
+  position: absolute;
+  inset: 0;
+  border: 1px solid color-mix(in srgb, var(--color-tema) 70%, transparent);
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--color-tema) 12%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--color-tema) 28%, transparent);
+}
+
+.punto {
+  position: relative;
+  z-index: 1;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--color-tema);
+  box-shadow: 0 0 9px color-mix(in srgb, var(--color-tema) 65%, transparent);
+}
+
+.opcion:focus-visible {
+  outline: 2px solid var(--color-tema);
+  outline-offset: 2px;
+}

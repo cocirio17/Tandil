@@ -1,0 +1,29 @@
+.pagina {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  background: var(--fondo-profundo);
+  color: var(--texto);
+  transition:
+    background-color 700ms ease,
+    color 500ms ease,
+    --fondo-profundo 700ms ease,
+    --fondo-base 700ms ease,
+    --fondo-superficie 700ms ease,
+    --fondo-elevado 700ms ease,
+    --magenta 600ms ease,
+    --purpura 600ms ease,
+    --violeta 600ms ease,
+    --violeta 600ms ease,
+    --acento-hacking 600ms ease,
+    --acento-startup 600ms ease;
+}
+
+main {
+  flex: 1 0 auto;
+  background:
+    radial-gradient(ellipse at 100% 38%, color-mix(in srgb, var(--acento-startup) 3%, transparent), transparent 40%),
+    linear-gradient(180deg, transparent 0%, color-mix(in srgb, var(--fondo-base) 60%, transparent) 45%, transparent 100%);
+  transition: background 700ms ease;
+}

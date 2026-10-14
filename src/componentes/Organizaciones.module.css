@@ -1,0 +1,145 @@
+.seccion {
+  background: var(--fondo-profundo);
+}
+
+.encabezado {
+  display: grid;
+  gap: var(--e-4);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.etiqueta {
+  color: var(--texto-medio);
+}
+
+.titulo {
+  max-width: 20ch;
+}
+
+.grupo + .grupo {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.grupoEncabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--e-2) var(--e-4);
+  padding-bottom: var(--e-4);
+  border-bottom: 1px solid var(--linea);
+}
+
+.grupoTitulo {
+  font-size: var(--t-h3);
+}
+
+.grupoLede {
+  max-width: 58ch;
+  font-size: var(--t-sm);
+  color: var(--texto-tenue);
+}
+
+/* Pistas de tamaño fijo: la caja es siempre igual, el logo respeta su proporción. */
+.rejilla {
+  display: grid;
+  gap: var(--e-3);
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  justify-content: start;
+  margin-top: var(--e-5);
+}
+.logo {
+  display: grid;
+  gap: var(--e-3);
+  height: 100%;
+}
+
+.logoMarco {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 6.5rem;
+  padding: var(--e-4);
+  border: 1px solid var(--linea);
+  border-radius: var(--r-md);
+  background: rgba(255, 255, 255, 0.015);
+  transition:
+    border-color var(--medio) var(--curva),
+    background-color var(--medio) var(--curva);
+}
+
+.logo:focus-visible {
+  outline: 2px solid var(--magenta);
+  outline-offset: 3px;
+}
+
+/* Altura fija y ancho libre: todos los logos comparten optical height y cada
+   marca conserva su proporción original. */
+.logoImagen {
+  width: auto;
+  height: 2.1rem;
+  max-width: 100%;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity var(--medio) var(--curva);
+}
+
+.logo:hover .logoImagen,
+.logo:focus-visible .logoImagen {
+  opacity: 1;
+}
+
+.logoSalida {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: inline-flex;
+  color: var(--magenta);
+  opacity: 0;
+  transform: translate(-3px, 3px);
+  transition:
+    opacity var(--medio) var(--curva),
+    transform var(--medio) var(--curva);
+}
+
+.logo:hover .logoSalida,
+.logo:focus-visible .logoSalida {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.logoPie {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.logoNombre {
+  font-family: var(--fuente-titulo);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-apretado);
+  color: var(--texto-medio);
+}
+
+.logoArea {
+  font-family: var(--fuente-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texto-tenue);
+}
+
+.nota {
+  margin-top: var(--e-6);
+  padding-top: var(--e-4);
+  border-top: 1px solid var(--linea);
+  font-size: var(--t-xs);
+  color: var(--texto-tenue);
+}
+
+@media (min-width: 640px) {
+  .rejilla {
+    grid-template-columns: repeat(auto-fill, 15rem);
+  }
+}

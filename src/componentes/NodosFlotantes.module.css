@@ -1,0 +1,35 @@
+.contenedor {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nodo {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--magenta);
+  box-shadow: 0 0 12px var(--brillo-magenta), 0 0 26px var(--brillo-magenta);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.nodo:nth-child(even) {
+  width: 6px;
+  height: 6px;
+  background: var(--violeta);
+  box-shadow: 0 0 12px var(--brillo-violeta), 0 0 24px var(--brillo-violeta);
+}
+
+.nodo:nth-child(3n) {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  background: transparent;
+  border: 1px solid var(--magenta-suave);
+  box-shadow: none;
+  opacity: 0.4;
+}

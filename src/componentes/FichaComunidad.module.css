@@ -1,0 +1,131 @@
+.ficha {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-3);
+  height: 100%;
+  padding: clamp(1.25rem, 2.5vw, 1.6rem);
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--r-lg);
+  background: var(--fondo-superficie);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--sombra-media);
+  transform-style: preserve-3d;
+  transition:
+    border-color var(--medio) var(--curva),
+    transform var(--medio) var(--curva),
+    box-shadow var(--medio) var(--curva);
+}
+
+.ficha:hover {
+  border-color: color-mix(in srgb, var(--acento) 55%, var(--linea-fuerte));
+  box-shadow: var(--sombra-alta);
+}
+
+/* Cada categoría toma el acento de su jornada, o el púrpura del sitio. */
+.hacking {
+  --acento: var(--acento-hacking);
+  --acento-texto: var(--acento-hacking-texto);
+  --acento-tenue: var(--acento-hacking-tenue);
+}
+
+.startup {
+  --acento: var(--acento-startup);
+  --acento-texto: var(--acento-startup-texto);
+  --acento-tenue: var(--acento-startup-tenue);
+}
+
+.general {
+  --acento: var(--violeta);
+  --acento-texto: var(--violeta-texto);
+  --acento-tenue: var(--magenta-tenue);
+}
+
+.propia {
+  border-color: color-mix(in srgb, var(--acento) 45%, transparent);
+}
+
+.titulo {
+  font-size: var(--t-h3);
+  line-height: 1.2;
+}
+
+.texto {
+  font-size: var(--t-sm);
+  color: var(--texto-medio);
+}
+
+.respuesta {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.7rem 0.85rem;
+  border-left: 2px solid var(--acento);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  background: var(--acento-tenue);
+  font-size: var(--t-sm);
+  color: var(--texto);
+}
+
+.respuestaEtiqueta {
+  font-family: var(--fuente-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--acento-texto);
+}
+
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-2);
+  margin-top: auto;
+  padding-top: var(--e-3);
+}
+
+.etiquetas li {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--linea);
+  border-radius: var(--r-full);
+  font-family: var(--fuente-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--texto-tenue);
+}
+
+.pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--e-3);
+  padding-top: var(--e-3);
+  border-top: 1px solid var(--linea);
+}
+
+.fecha {
+  font-family: var(--fuente-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--texto-tenue);
+}
+
+.quitar {
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--r-full);
+  font-family: var(--fuente-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--texto-medio);
+  transition:
+    color var(--medio) var(--curva),
+    border-color var(--medio) var(--curva);
+}
+
+.quitar:hover,
+.quitar:focus-visible {
+  border-color: var(--magenta);
+  color: var(--magenta-suave);
+}

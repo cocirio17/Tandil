@@ -1,0 +1,92 @@
+.sello {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(8rem, 22vw, 12.5rem);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  isolation: isolate;
+}
+
+.sello::after {
+  content: '';
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--brillo-magenta), transparent 70%);
+  filter: blur(14px);
+  opacity: 0.7;
+  z-index: -1;
+}
+
+.pista {
+  position: absolute;
+  inset: 0;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Giro continuo. Solo transforma: no provoca reflow. */
+.sello .pista {
+  animation: giro 26s linear infinite;
+}
+
+.selloDisparada .pista {
+  animation-duration: 3s;
+}
+
+@keyframes giro {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.textoAnillo {
+  font-family: var(--fuente-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  fill: var(--magenta-suave);
+  text-transform: uppercase;
+}
+
+.nucleo {
+  display: grid;
+  gap: 0.1rem;
+  text-align: center;
+  font-family: var(--fuente-mono);
+  font-size: 0.62rem;
+  line-height: 1.3;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texto-medio);
+  pointer-events: none;
+}
+
+.nucleoLinea:first-child {
+  font-family: var(--fuente-titulo);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-apretado);
+  text-transform: none;
+  color: var(--texto);
+}
+
+.sello:hover .nucleoLinea:first-child {
+  color: var(--magenta-suave);
+}
+
+.selloDisparada .nucleo {
+  animation: parpadeo 0.45s steps(2) 3;
+}
+
+@keyframes parpadeo {
+  50% {
+    opacity: 0.25;
+  }
+}

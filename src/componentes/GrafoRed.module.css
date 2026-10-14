@@ -1,0 +1,79 @@
+.contenedor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.grafo {
+  position: absolute;
+  top: 50%;
+  right: -6%;
+  width: min(760px, 92%);
+  height: auto;
+  transform: translateY(-50%);
+  opacity: 0.55;
+}
+
+.enlaces line {
+  stroke-dasharray: 3 7;
+}
+
+.nodos circle {
+  opacity: 0.85;
+}
+
+.marcaAgua {
+  position: absolute;
+  right: -2%;
+  bottom: -6%;
+  font-family: var(--fuente-titulo);
+  font-size: clamp(9rem, 26vw, 24rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.8;
+  color: rgba(233, 237, 243, 0.022);
+  user-select: none;
+}
+
+.coordenada {
+  position: absolute;
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.14em;
+  color: rgba(233, 237, 243, 0.22);
+}
+
+.coordenadaA {
+  top: 16%;
+  right: 8%;
+}
+
+.coordenadaB {
+  top: 46%;
+  right: 4%;
+}
+
+.coordenadaC {
+  bottom: 14%;
+  right: 16%;
+}
+
+@media (max-width: 899px) {
+  .grafo {
+    top: auto;
+    bottom: -4%;
+    right: -22%;
+    width: 132%;
+    opacity: 0.34;
+  }
+
+  .marcaAgua {
+    bottom: -2%;
+  }
+
+  .coordenadaA,
+  .coordenadaC {
+    display: none;
+  }
+}

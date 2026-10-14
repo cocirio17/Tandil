@@ -1,0 +1,122 @@
+/*
+ * Sistema visual de Tandil Tech Week — paleta "Synthwave Cyber & Deep Violet".
+ *
+ * Rosa neón, magenta, violeta y azul nocturno. Los colores base provienen de la
+ * referencia de diseño; los tonos `*-texto` son derivados más claros que se
+ * usan para tipografía porque sobre fondo oscuro la saturación máxima baja de
+ * 4,5:1 de contraste (WCAG AA) en tamaños chicos.
+ */
+
+:root {
+  /* ── Fondo ───────────────────────────────────────────────── */
+  --fondo-profundo: #080B1A;
+  --fondo-base: #0F172A;
+  --fondo-superficie: rgba(30, 27, 75, 0.6);
+  --fondo-elevado: rgba(49, 42, 102, 0.55);
+  --fondo-cristal: rgba(76, 57, 148, 0.35);
+
+  /* ── Líneas y bordes ─────────────────────────────────────── */
+  --linea: rgba(216, 180, 254, 0.12);
+  --linea-fuerte: rgba(232, 121, 249, 0.26);
+  --linea-neon: rgba(236, 72, 153, 0.55);
+
+  /* ── Texto ───────────────────────────────────────────────── */
+  --texto: #F5F3FF;
+  --texto-medio: #B9B4D9;
+  --texto-tenue: #8B86AC;
+
+  /* ── Paleta de referencia ────────────────────────────────── */
+  --rosa: #F43F5E;
+  --magenta: #EC4899;
+  --magenta-suave: #F9A8D4;
+  --magenta-tenue: rgba(236, 72, 153, 0.14);
+  --violeta: #A855F7;
+  --purpura: #9333EA;
+  --purpura-oscuro: #6B21A8;
+  --purpura-profundo: #581C87;
+
+  /* Tonos claros para tipografía: legibles sobre indigo night. */
+  --magenta-texto: #F9A8D4;
+  --violeta-texto: #D8B4FE;
+
+  /* ── Semántica por jornada ───────────────────────────────── */
+  --acento-hacking: #EC4899;
+  --acento-hacking-texto: #F9A8D4;
+  --acento-hacking-tenue: rgba(236, 72, 153, 0.13);
+  --acento-startup: #A855F7;
+  --acento-startup-texto: #D8B4FE;
+  --acento-startup-tenue: rgba(168, 85, 247, 0.13);
+
+  /* ── Brillo ambiental ────────────────────────────────────── */
+  --brillo-magenta: rgba(236, 72, 153, 0.2);
+  --brillo-violeta: rgba(147, 51, 234, 0.24);
+
+  /* ── Tipografía ───────────────────────────────────────────── */
+  --fuente-titulo: 'Space Grotesk', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --fuente-texto: 'Inter', ui-sans-serif, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --fuente-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', 'Cascadia Mono', Consolas, monospace;
+
+  --t-xs: 0.72rem;
+  --t-sm: clamp(0.8125rem, 0.2vw + 0.76rem, 0.9375rem);
+  --t-base: clamp(0.9375rem, 0.35vw + 0.84rem, 1.0625rem);
+  --t-md: clamp(1rem, 0.5vw + 0.9rem, 1.1875rem);
+  --t-lg: clamp(1.0625rem, 0.6vw + 0.94rem, 1.375rem);
+  --t-h3: clamp(1.25rem, 1.4vw + 0.95rem, 1.75rem);
+  --t-h2: clamp(1.85rem, 4vw + 0.5rem, 3.5rem);
+  --t-display: clamp(2.75rem, 11.5vw, 9.25rem);
+
+  --tracking-etiqueta: 0.16em;
+  --tracking-apretado: -0.02em;
+  --tracking-display: -0.04em;
+
+  /* ── Espaciado y forma ───────────────────────────────────── */
+  --e-1: 0.25rem;
+  --e-2: 0.5rem;
+  --e-3: 0.75rem;
+  --e-4: 1rem;
+  --e-5: 1.5rem;
+  --e-6: 2rem;
+  --e-7: 3rem;
+  --e-8: 4rem;
+  --e-9: 6rem;
+  --seccion: clamp(4.5rem, 9vw, 8.5rem);
+  --canal: clamp(1.25rem, 5vw, 4.5rem);
+  --ancho: 1240px;
+
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-full: 999px;
+
+  --sombra-baja: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --sombra-media: 0 18px 44px -26px rgba(0, 0, 0, 0.85);
+  --sombra-alta: 0 44px 96px -44px rgba(0, 0, 0, 0.9);
+  --brillo-neon: 0 0 0 1px rgba(236, 72, 153, 0.32), 0 20px 48px -30px rgba(236, 72, 153, 0.55);
+  --brillo-violeta-neon: 0 0 0 1px rgba(168, 85, 247, 0.35), 0 20px 48px -30px rgba(168, 85, 247, 0.55);
+
+  /* ── Movimiento ──────────────────────────────────────────── */
+  --curva: cubic-bezier(0.22, 0.68, 0.28, 1);
+  --curva-salida: cubic-bezier(0.16, 1, 0.3, 1);
+  --rapido: 160ms;
+  --medio: 280ms;
+  --lento: 620ms;
+
+  --alto-encabezado: 4.25rem;
+  --z-encabezado: 60;
+  --z-menu: 80;
+}
+
+/* Acento por jornada: Hacking Day en magenta, Startup Day en violeta. */
+.acento-hacking {
+  --acento: var(--acento-hacking);
+  --acento-texto: var(--acento-hacking-texto);
+  --acento-tenue: var(--acento-hacking-tenue);
+  --acento-brillo: var(--brillo-neon);
+}
+
+.acento-startup {
+  --acento: var(--acento-startup);
+  --acento-texto: var(--acento-startup-texto);
+  --acento-tenue: var(--acento-startup-tenue);
+  --acento-brillo: var(--brillo-violeta-neon);
+}

@@ -1,0 +1,487 @@
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: min(100svh, 62rem);
+  padding-top: calc(var(--alto-encabezado) + clamp(3rem, 8vw, 6rem));
+  padding-bottom: clamp(5rem, 10vw, 8rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ── Fondo con profundidad ───────────────────────────────────── */
+.fondo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(120% 80% at 50% -10%, #23195C 0%, var(--fondo-base) 60%),
+    var(--fondo-base);
+}
+
+.rejilla {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(216, 180, 254, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(216, 180, 254, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(90% 70% at 50% 30%, #000 20%, transparent 78%);
+  -webkit-mask-image: radial-gradient(90% 70% at 50% 30%, #000 20%, transparent 78%);
+}
+
+.brillo {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+}
+
+.brilloMagenta {
+  top: -18%;
+  right: -6%;
+  width: min(38rem, 70vw);
+  height: min(38rem, 70vw);
+  background: var(--brillo-magenta);
+}
+
+.brilloVioleta {
+  bottom: -24%;
+  left: -10%;
+  width: min(34rem, 70vw);
+  height: min(34rem, 70vw);
+  background: var(--brillo-violeta);
+}
+
+.grafico {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Capa de nodos flotantes que GSAP lanza fuera de pantalla. */
+.capaNodos {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Escena 3D (React Three Fiber) */
+.escena3d {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .escena3d {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .escena3d {
+    display: none;
+  }
+}
+
+.contenedor {
+  position: relative;
+  display: grid;
+  gap: var(--e-6);
+  align-items: center;
+  justify-items: start;
+}
+
+.contenido {
+  max-width: 58rem;
+}
+
+.selloZona {
+  justify-self: end;
+  margin-top: var(--e-2);
+}
+
+/* ── Estado del evento ───────────────────────────────────────── */
+.envolturaEstado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--e-2) var(--e-4);
+  margin-bottom: var(--e-5);
+  overflow: hidden;
+}
+
+.estado,
+.ubicacion {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-2);
+  padding-block: 0.3rem;
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: var(--tracking-etiqueta);
+  text-transform: uppercase;
+}
+
+.estado {
+  padding-inline: 0.7rem;
+  border: 1px solid var(--linea-fuerte);
+  border-radius: var(--r-full);
+  background: var(--fondo-elevado);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--texto);
+}
+
+.estadoHacking {
+  border-color: color-mix(in srgb, var(--acento-hacking) 50%, transparent);
+  background: var(--acento-hacking-tenue);
+  color: var(--magenta-suave);
+}
+
+.estadoStartup {
+  border-color: color-mix(in srgb, var(--acento-startup) 50%, transparent);
+  background: var(--acento-startup-tenue);
+  color: var(--violeta-texto);
+}
+
+.punto {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--magenta);
+  box-shadow: 0 0 0 3px var(--magenta-tenue);
+}
+
+.estadoActivo .punto {
+  animation: latido 2.4s var(--curva) infinite;
+}
+
+.estadoHacking .punto {
+  background: var(--acento-hacking);
+  box-shadow: 0 0 0 3px var(--acento-hacking-tenue);
+}
+
+.estadoStartup .punto {
+  background: var(--acento-startup);
+  box-shadow: 0 0 0 3px var(--acento-startup-tenue);
+}
+
+@keyframes latido {
+  0%,
+  100% {
+    box-shadow: 0 0 0 3px var(--magenta-tenue);
+  }
+  50% {
+    box-shadow: 0 0 0 7px color-mix(in srgb, var(--magenta) 7%, transparent);
+  }
+}
+
+.ubicacion {
+  color: var(--texto-tenue);
+}
+
+/* ── Título ─────────────────────────────────────────────────── */
+.titulo {
+  display: grid;
+  font-size: var(--t-display);
+  font-weight: 700;
+  letter-spacing: var(--tracking-display);
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.linea {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.lineaTexto {
+  display: block;
+}
+
+.lineaAcento {
+  color: var(--magenta);
+}
+
+/* Glitch: dos copias desplazadas en aparecciones largas y controladas. */
+.tituloGlitch .lineaAcento {
+  position: relative;
+}
+
+.tituloGlitch .lineaAcento::before,
+.tituloGlitch .lineaAcento::after {
+  content: attr(data-glitch);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Una aparición cada ~9s: molesto, no continuo. */
+.tituloGlitch .lineaAcento::before {
+  color: var(--violeta);
+  clip-path: inset(8% 0 62% 0);
+  transform: translate(-3px, -2px);
+  animation: glitchUno 9s steps(2, end) infinite;
+}
+
+.tituloGlitch .lineaAcento::after {
+  color: var(--magenta-suave);
+  clip-path: inset(58% 0 12% 0);
+  transform: translate(3px, 2px);
+  animation: glitchDos 9s steps(2, end) infinite;
+}
+
+@keyframes glitchUno {
+  0%,
+  92% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  93% {
+    opacity: 0.9;
+    transform: translate(-4px, -2px);
+  }
+  96% {
+    opacity: 0.9;
+    transform: translate(2px, 1px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes glitchDos {
+  0%,
+  92% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  94% {
+    opacity: 0.85;
+    transform: translate(4px, 2px);
+  }
+  97% {
+    opacity: 0.85;
+    transform: translate(-3px, -1px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+}
+
+.regla {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  height: 1px;
+  margin-block: clamp(1.25rem, 3vw, 2rem);
+  background: var(--violeta);
+  background: linear-gradient(to right, var(--magenta), var(--violeta), transparent);
+}
+
+.bajada {
+  max-width: 34ch;
+  font-size: var(--t-lg);
+  color: var(--texto-medio);
+}
+
+/* ── Fecha y contador ───────────────────────────────────────── */
+.bloqueFecha {
+  display: grid;
+  gap: var(--e-4);
+  margin-top: var(--e-5);
+}
+
+.fecha {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--e-3);
+  font-family: var(--fuente-mono);
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--texto);
+}
+
+.fecha svg {
+  color: var(--magenta);
+}
+
+.fechaGuion {
+  color: var(--texto-tenue);
+}
+
+/* ── Acciones ───────────────────────────────────────────────── */
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--e-3);
+  margin-top: var(--e-6);
+}
+
+/* ── Accesos a cada jornada ─────────────────────────────────── */
+.jornadasAcceso {
+  margin-top: var(--e-6);
+  padding-top: var(--e-5);
+  border-top: 1px solid var(--linea);
+}
+
+.jornadasAcceso ul {
+  display: grid;
+  gap: var(--e-2);
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+}
+
+.accesoJornada {
+  display: flex;
+  align-items: center;
+  gap: var(--e-3);
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--linea);
+  border-radius: var(--r-md);
+  background: var(--fondo-superficie);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition:
+    border-color var(--medio) var(--curva),
+    background-color var(--medio) var(--curva),
+    transform var(--medio) var(--curva);
+}
+
+.accesoJornada:hover,
+.accesoJornada:focus-visible {
+  border-color: color-mix(in srgb, var(--acento) 60%, transparent);
+  background: var(--acento-tenue);
+  transform: translateY(-2px);
+}
+
+.accesoJornada svg {
+  margin-left: auto;
+  color: var(--acento);
+}
+
+.accesoFecha {
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--acento-texto);
+}
+
+.accesoNombre {
+  font-family: var(--fuente-titulo);
+  font-size: var(--t-md);
+  font-weight: 600;
+  letter-spacing: var(--tracking-apretado);
+  color: var(--texto);
+}
+
+/* Cada jornada con su familia cromática. */
+.hacking {
+  --acento: var(--acento-hacking);
+  --acento-texto: var(--acento-hacking-texto);
+  --acento-tenue: var(--acento-hacking-tenue);
+}
+
+.startup {
+  --acento: var(--acento-startup);
+  --acento-texto: var(--acento-startup-texto);
+  --acento-tenue: var(--acento-startup-tenue);
+}
+
+/* ── Indicador de desplazamiento ────────────────────────────── */
+.desplazar {
+  position: absolute;
+  bottom: clamp(1.25rem, 3vw, 2rem);
+  left: 50%;
+  display: none;
+  align-items: center;
+  gap: var(--e-3);
+  transform: translateX(-50%);
+  font-family: var(--fuente-mono);
+  font-size: var(--t-xs);
+  letter-spacing: var(--tracking-etiqueta);
+  text-transform: uppercase;
+  color: var(--texto-tenue);
+  transition: color var(--medio) var(--curva);
+}
+
+.desplazar:hover,
+.desplazar:focus-visible {
+  color: var(--texto-medio);
+}
+
+.desplazarLinea {
+  position: relative;
+  width: 3rem;
+  height: 1px;
+  background: var(--linea-fuerte);
+  overflow: hidden;
+}
+
+.desplazarLinea::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--magenta);
+  transform-origin: left center;
+  animation: barrido 2.8s var(--curva) infinite;
+}
+
+@keyframes barrido {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  45% {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+  55% {
+    transform: scaleX(1);
+    transform-origin: right center;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right center;
+  }
+}
+
+@media (min-width: 760px) {
+  .bloqueFecha {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: var(--e-6);
+  }
+
+  .fecha {
+    align-self: start;
+  }
+}
+
+/* El sello pasa a lateral en pantallas anchas. */
+@media (min-width: 1040px) {
+  .contenedor {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--e-7);
+  }
+
+  .selloZona {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 700px) {
+  .desplazar {
+    display: flex;
+  }
+}
